@@ -12,7 +12,7 @@ public class Main {
             System.out.println("\n------------------------");
             System.out.println("BANK    OF     FRESHERS");
             System.out.println("------------------------\n");
-            System.out.println("********WELCOME*********\n");
+            System.out.println("*********WELCOME**********\n");
             System.out.println("Press 1-CreateAccount 2-Log in to existing account 3-exit");
             String str = sc.next();
             choice = v.choiceValidation(str);
