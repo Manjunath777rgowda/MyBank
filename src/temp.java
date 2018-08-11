@@ -1,5 +1,5 @@
-import com.sun.javafx.logging.Logger;
-import org.hibernate.Session;
+//import com.sun.javafx.logging.Logger;
+/*import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -38,3 +38,4 @@ public class temp {
     }
 
     }
+*/
