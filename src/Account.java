@@ -157,12 +157,11 @@ public class Account {
     }
 
     public boolean setInputDetails( Details sd,String accountNumber) {
-
+        //this is set details class
         Scanner sc=new Scanner(System.in);
         String str;
         int choice;
         boolean flag=true;
-
         System.out.println("-----------------------------------Verify your details------------------------------");
         System.out.println("Account Number      : "+accountNumber);
         System.out.println("Account Name        : "+sd.getAccountName());
