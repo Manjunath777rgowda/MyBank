@@ -8,7 +8,7 @@ import java.util.List;
 
 import static java.util.logging.Level.OFF;
 
-public class connectJDBC {
+public class   connectJDBC {
 
     public Session getSession(Object o){
 
