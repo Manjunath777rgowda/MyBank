@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.text.DateFormat.getInstance;
+
 @Entity
 public class Account {
     @Id
@@ -168,10 +170,10 @@ public class Account {
         System.out.println("Pan number          : "+sd.getPanNumber());
         System.out.println("Email id            : "+sd.getEmailId());
         System.out.println("Adress              : "+sd.getAddress());
-        SimpleDateFormat format=new SimpleDateFormat("dd-mm-yyyy");
+        /*SimpleDateFormat format=new SimpleDateFormat("dd-mm-yyyy");
         Date date1= new Date();
-        date1=sd.getDob();
-        System.out.println("Date Of Birth       : "+format.getDateInstance().format(date1));
+        date1=sd.getDob();*/
+        System.out.println("Date Of Birth       : "+sd.getDob());
         System.out.println("Phone Number        : "+sd.getPhoneNumber());
         System.out.println("Adhar Number        : "+sd.getAdharNumber());
         //System.out.println("Initial Amount      : "+sd.getInitialamount());

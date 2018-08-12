@@ -8,6 +8,10 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static java.text.DateFormat.getInstance;
 
 @Entity
 @Table(name="UserDetails")
@@ -20,7 +24,7 @@ public class Details {
     private String accountName;
 
     @Column(name = "DOB")
-    private Date dob;
+    private String dob;
 
     @Column(name = "adress")
     private String address;
@@ -74,7 +78,7 @@ public class Details {
         this.adharNumber = adharNumber;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -82,9 +86,7 @@ public class Details {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getDob() {
-        return dob;
-    }
+    public String getDob() { return dob;}
 
     public String getAdharNumber() {
         return adharNumber;
@@ -109,6 +111,7 @@ public class Details {
         Scanner sc = new Scanner(System.in);
         String temp, temp1;
         boolean flag = false;
+        boolean temp2=false;
         String accType = "";
         String numberAsString = "";
         Details sd = new Details();
@@ -180,28 +183,32 @@ public class Details {
 
 
         do {
-            System.out.println("Enter date of birth (dd-mm-yyyy)");
+            System.out.println("Enter date of birth (dd/mm/yyyy)");
             temp = sc.next();
             flag = v.dateValidation(temp);
             if (flag) {
                 try {
-                    SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
-                    Date date = format.parse(temp);
-                    //df = DateFormat.getDateInstance().format(date);
-                    //System.out.println("date="+date);
-
-                    sd.setDob(date);
-
+                    sd.setDob(temp);
                 } catch (Exception e) {
                     System.out.println("Invalid date");
                 }
             } else System.out.println("Invalid date");
         } while (!flag);
 
-        System.out.println("Enter Address");
-        temp = sc.next();
-        sd.setAddress(temp);
+        System.out.println("Enter address in the form of( house/flat no, street, city, state, country) : ");
+        String address1 = sc.nextLine();
+        do{
+            Pattern pattern=Pattern.compile("^[#.0-9a-zA-Z\\s,-]+$");
+            Matcher matcher=pattern.matcher(address1);
+            if(matcher.matches()){
+                temp2=true;
+                sd.setAddress(address1);
+            }
+            else{
+                address1 = sc.nextLine();
+            }
 
+        }while(!temp2);
         do {
             System.out.println("Enter Your 10 digit Phone Number");
             temp = sc.next();

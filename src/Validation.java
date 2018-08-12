@@ -1,8 +1,12 @@
+import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class Validation {
+    private static Pattern dateFrmtPtrn =
+            Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)");
 
     public int choiceValidation(String str) {
         try {
@@ -83,25 +87,11 @@ public class Validation {
     }
 
     public boolean dateValidation(String str)  {
-        if (str.matches("^\\d{2}\\-\\d{2}\\-\\d{4}$")) {
-            String[] parts = str.split("-");
-
-            int date = Integer.parseInt(parts[0]);
-            int month = Integer.parseInt(parts[1]);
-            int year=Integer.parseInt(parts[2]);
-            if(year<1900 || year>=2018){
-                return false;
-            }
-            if(month<=0 || month>12)
-            {
-                return false;
-            }
-            if(date<0 || date>31 || (date>30 && (month==2 || month==4 || month==6 || month==9 || month==11)) || (date>29 && month==2) || (date>28 && month==2 && year%4!=0)){
-                return false;
-            }
+        Matcher mtch = dateFrmtPtrn.matcher(str);
+        if(mtch.matches()){
             return true;
         }
-        else return false;
+        return false;
 
     }
 
@@ -126,6 +116,7 @@ public class Validation {
         }
         else return false;
     }
+
 
     public boolean amountValidation(String str) {
         try{
